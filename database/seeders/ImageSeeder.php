@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Image;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class ImageSeeder extends Seeder
@@ -15,6 +16,11 @@ class ImageSeeder extends Seeder
     public function run()
     {
         Image::truncate();
-        Image::factory(50)->create();
+
+        $posts = Post::all();
+
+        foreach ($posts as $post) {
+            Image::factory(rand(1,3))->for($post)->create();
+        }
     }
 }

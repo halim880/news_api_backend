@@ -24,6 +24,6 @@ class CategoryApiController extends Controller
     }
 
     public function posts(Category $category){
-        return PostResource::collection($category->posts()->paginate());
+        return PostResource::collection($category->posts()->get()->take(10));
     }
 }
