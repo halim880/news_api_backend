@@ -10,6 +10,6 @@ use Illuminate\Http\Request;
 class PostApiController extends Controller
 {
     public function index(){
-        return PostResource::collection(Post::paginate());
+        return PostResource::collection(Post::orderBy("created_at", "desc")->get()->take(20));
     }
 }
