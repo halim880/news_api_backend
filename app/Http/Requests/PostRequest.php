@@ -29,7 +29,7 @@ class PostRequest extends FormRequest
 
         return [
             'title'=> ['required'],
-            'content'=> ['required'],
+            'post_content'=> ['required'],
             'category_id'=> ['required'],
             'image'=> ['nullable']
         ];
@@ -47,7 +47,7 @@ class PostRequest extends FormRequest
 
         return [
             'title'=> $this->title,
-            'content'=> $this->content,
+            'post_content'=> $this->post_content,
             'category_id'=> $this->category_id,
             'user_id'=> 1,
             'post_type'=> 'image',

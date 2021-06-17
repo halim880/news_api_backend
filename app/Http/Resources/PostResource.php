@@ -12,7 +12,7 @@ class PostResource extends JsonResource
         return [
             'post_id'=> $this->id,
             'post_title'=> $this->title,
-            'post_content'=> $this->content,
+            'post_content'=> $this->post_content,
             'post_type'=> $this->post_type,
             'comments'=> CommentResource::collection($this->comments),
             'category'=> new CategoryResource($this->category),

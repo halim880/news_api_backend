@@ -22,7 +22,7 @@ class PostTest extends TestCase
         $this->withoutExceptionHandling();
         $data = [
                 'title'=> 'this is a title',
-                'content'=> 'this is the content',
+                'post_content'=> 'this is the content',
                 'post_type'=> "image",
                 'user_id'=> 1,
                 'category_id'=> 1,
@@ -31,6 +31,7 @@ class PostTest extends TestCase
 
         $response = $this->post('category/store', $data);
         $post = Post::first();
+        $this->assertEquals($post->post_content, "this is the content");
         $this->assertFileExists(Post::getImageDirectory()."/".$post->image);
         $post->removeImage();
         $this->assertFileDoesNotExist(Post::getImageDirectory()."/".$post->image);
