@@ -29,6 +29,7 @@ Route::post('category/store', [CategoryApiController::class, 'store']);
 
 
 Route::get('posts', [PostApiController::class, 'index']);
+Route::post('posts/store', [PostApiController::class, 'store']);
 
 
 Route::get('authors', [UserApiController::class, 'index']);

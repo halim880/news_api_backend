@@ -37,7 +37,7 @@ class PostRequest extends FormRequest
 
     public function store(){
         $post = Post::create($this->toArray());
-        if ($post!==null) {
+        if ($post!==null && $this->image!==null) {
             Post::storeImage($this->image);
         }
     }
@@ -51,7 +51,7 @@ class PostRequest extends FormRequest
             'category_id'=> $this->category_id,
             'user_id'=> 1,
             'post_type'=> 'image',
-            'image'=> Post::getImageName($this->image),
+            'image'=> $this->image==null?null:Post::getImageName($this->image),
         ];
     }
 
