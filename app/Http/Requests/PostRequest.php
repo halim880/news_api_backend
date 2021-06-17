@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,26 +26,33 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'post_titile'=> ['required'],
-            'post_content'=> ['required'],
-            'post_category_id'=> ['required'],
+            'title'=> ['required'],
+            'content'=> ['required'],
+            'category_id'=> ['required'],
+            'image'=> ['nullable']
         ];
     }
 
     public function store(){
         $post = Post::create($this->toArray());
-        $post->sync($this->post_tag);
+        if ($post!==null) {
+            Post::storeImage($this->image);
+        }
     }
 
     public function toArray()
     {
+
         return [
-            'title'=> $this->post_title,
-            'content'=> $this->post_content,
-            'category_id'=> $this->post_category_id,
-            'user_id'=> Auth::user()->id,
-            'post_type'=> 'text',
+            'title'=> $this->title,
+            'content'=> $this->content,
+            'category_id'=> $this->category_id,
+            'user_id'=> 1,
+            'post_type'=> 'image',
+            'image'=> Post::getImageName($this->image),
         ];
     }
+
 }

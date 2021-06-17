@@ -19,7 +19,7 @@ class PostResource extends JsonResource
             'post_meta'=> $this->meta_data,
             'updated_at'=> $this->updated_at,
             'author'=> new AuthorResource($this->user),
-            'images'=> ImageResource::collection($this->images),
+            'image'=> $this->getImageUrl(),
             'tags'=> TagResource::collection($this->tags),
         ];
     }

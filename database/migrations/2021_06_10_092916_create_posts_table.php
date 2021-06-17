@@ -17,11 +17,12 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->string('image')->nullable();
             $table->string('post_type');
             $table->foreignId('user_id');
             $table->foreignId('category_id');
 
-            $table->json('meta_date')->nullable();
+            $table->json('meta_data')->nullable();
 
             $table->timestamps();
         });

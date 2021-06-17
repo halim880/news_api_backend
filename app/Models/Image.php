@@ -14,4 +14,8 @@ class Image extends Model
     public function post(){
         return $this->belongsTo(Post::class);
     }
+
+    public function getImageUrl(){
+        return secure_asset('images')."/".$this->url;
+    }
 }

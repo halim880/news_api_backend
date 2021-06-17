@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', function () {
+    return view('layouts.app');
+});
+
+
+Route::get('/create', function () {
+    $categories = Category::all();
+    return view('post.create')->with([
+        'categories'=> $categories,
+    ]);
+});
+
+
+Route::post("category/store", [PostController::class, "store"]);

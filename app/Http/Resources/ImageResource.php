@@ -16,7 +16,7 @@ class ImageResource extends JsonResource
     {
         return [
             'image_id'=> $this->id,
-            'image_url'=> $this->url,
+            'image_url'=> $this->getImageUrl(),
             'image_description'=> $this->description,
             'post_id'=> $this->post_id,
             'is_featured'=> $this->featured,

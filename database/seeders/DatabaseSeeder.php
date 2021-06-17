@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             CategoryTableSeeder::class,
-            TagSeeder::class,
-            PostTableSeeder::class,
-            CommentTableSeeder::class,
-            ImageSeeder::class,
-            PostTagTableSeeder::class,
+            // TagSeeder::class,
+            // PostTableSeeder::class,
+            // CommentTableSeeder::class,
+            // ImageSeeder::class,
+            // PostTagTableSeeder::class,
         ]);
     }
 }

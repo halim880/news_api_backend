@@ -23,9 +23,13 @@ class ImageFactory extends Factory
     {
         return [
             'description'=> $this->faker->sentence,
-            'url'=> $this->faker->imageUrl(100, 100),
+            'url'=> $this->avatar(),
             'post_id'=> rand(1, 10),
             'featured'=> $this->faker->randomElement([true, false]),
         ];
+    }
+
+    public function avatar(){
+        return $this->faker->file(storage_path('images'), resource_path("images"), false);
     }
 }

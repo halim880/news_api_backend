@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\HasImage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, HasImage;
     protected $guarded = [];
+    public const IMAGE_PATH = 'images';
+    // public const BASE_URL = 'scholarship/applicants';
+    // public const VIEWS_PATH = 'scholarship.applicant.';
+    // public const IMAGE_DIRECTORY = 'app/public/image/applicant';
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -32,5 +37,9 @@ class Post extends Model
 
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+
+    public function getImageUrl(){
+        return secure_asset('images')."/".$this->image;
     }
 }
